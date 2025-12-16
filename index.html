@@ -1,613 +1,525 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HY7601+KY1032 킬팻 유산균 분석 리포트</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #fafaf9; /* Stone-50: Warm neutral background */
-            color: #44403c; /* Stone-700: Soft dark text */
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FatSlim™ Probiotics (HY7601 + KY1032) | Weight & Body-Fat Support</title>
+  <meta name="description" content="FatSlim™ (HY7601 + KY1032) is a dual-strain probiotic blend designed for brands building weight & body-fat support products. Expo-ready one-page landing." />
 
-        /* Chart Container Utilities */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
-        }
+  <style>
+    :root{
+      --bg:#fbfbfd;
+      --card:#ffffff;
+      --text:#0b0f1a;
+      --muted:#5a6478;
+      --line:rgba(11,15,26,.10);
+      --accent:#2563eb;
+      --accent2:#0ea5e9;
+      --good:#16a34a;
+      --shadow: 0 18px 40px rgba(11,15,26,.08);
+      --radius: 18px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 500px at 70% -10%, rgba(37,99,235,.12), transparent 60%),
+        radial-gradient(900px 500px at 10% 0%, rgba(14,165,233,.10), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 90px;}
+    .nav{
+      position:sticky; top:14px; z-index:20;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(11,15,26,.06);
+    }
+    .brand{display:flex; gap:10px; align-items:center; text-decoration:none}
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .brand b{letter-spacing:.2px}
+    .navlinks{display:flex; gap:10px; align-items:center}
+    .navlinks a{
+      text-decoration:none; font-size:14px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+    }
+    .navlinks a:hover{background:rgba(11,15,26,.04); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(11,15,26,.06);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      color:var(--text);
+      transition: transform .15s ease, box-shadow .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 26px rgba(11,15,26,.09)}
+    .btn.primary{
+      border:none;
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 16px 34px rgba(37,99,235,.22);
+    }
 
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
-        }
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      padding:34px 6px 8px;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.8);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .dot{width:9px; height:9px; border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(22,163,74,.12)}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:62ch;
+    }
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 10px}
+    .fine{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:12.8px;
+    }
 
-        /* Custom Scrollbar for cleaner look */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f5f5f4; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d6d3d1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a8a29e; 
-        }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.pad{padding:18px}
 
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
+    .productVisual{
+      padding:18px;
+      display:flex; flex-direction:column; gap:12px;
+      min-height: 320px;
+    }
+    .mock{
+      height: 230px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(240px 170px at 25% 40%, rgba(37,99,235,.16), transparent 60%),
+        radial-gradient(280px 190px at 70% 35%, rgba(14,165,233,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(11,15,26,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .pill{
+      position:absolute; left:14px; bottom:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+      color:var(--text);
+    }
+    .tag{
+      position:absolute; right:14px; top:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .tag b{color:var(--text)}
+    .kpis{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(11,15,26,.02);
+    }
+    .kpi b{display:block; font-size:18px; letter-spacing:-.2px}
+    .kpi span{display:block; margin-top:4px; color:var(--muted); font-size:12.5px}
 
-        .tab-active {
-            border-bottom: 2px solid #0d9488; /* Teal-600 */
-            color: #0d9488;
-            font-weight: 700;
-        }
-    </style>
-    <!-- Chosen Palette: Warm Scientific Wellness (Stone Neutral Background, Teal/Cyan Accents for Medical/Science feel, Orange for Energy/Fat burning) -->
-    <!-- Application Structure Plan: 
-         1. Hero Section: Immediate value proposition "Scientific Fat Reduction".
-         2. The Dual Formula (Concept): Interactive explanation of HY7601 + KY1032.
-         3. Clinical Evidence Dashboard (Data): Interactive tabs showing the 3 key papers with visualized trends (Line chart for 8-week trial, Radar for benefits).
-         4. Product Ecosystem (Application): Grid layout showing how the probiotics are applied in real products.
-         5. User Experience (Reviews): Visualized summary of user feedback keywords and timeline.
-         Why this structure? It flows from the "What" (Formula) to the "Proof" (Science) to the "How to Use" (Products) and finally "Social Proof" (Reviews), mirroring a logical decision-making process. -->
-    <!-- Visualization & Content Choices:
-         1. Clinical Trial Trend (Line Chart): Visualizes the "8-week significant reduction" described in the text.
-         2. Benefit Distribution (Doughnut Chart): Shows the breakdown of reported benefits (Weight, Metabolism, Digestion).
-         3. Mechanism Diagram (HTML/CSS Cards): Visualizes the dual strain roles without SVG.
-         4. Product Cards: Text-based interactive cards to organize product categories.
-         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    .section{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    h2{margin:0 0 10px; font-size:20px; letter-spacing:-.3px}
+    .bullets{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .li{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+    }
+    .ic{
+      width:34px; height:34px;
+      border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      flex:0 0 auto;
+      font-weight:900;
+      color:var(--accent);
+    }
+    .li b{display:block; font-size:14px}
+    .li p{margin:4px 0 0; color:var(--muted); font-size:13px}
+
+    .reviews{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .quote{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:#fff;
+    }
+    .quote .src{margin-top:8px; color:var(--muted); font-size:12.5px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+    .quote .stars{color:#0b0f1a; font-weight:900}
+    .quote a{color:var(--accent); text-decoration:none}
+    .quote a:hover{text-decoration:underline}
+
+    .form{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+    label{display:grid; gap:6px; font-size:13px; color:var(--muted)}
+    input,select,textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      font-family:var(--font);
+      font-size:14px;
+    }
+    textarea{resize:vertical}
+    .formGrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .foot{
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:12px;
+      padding:2px 8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(11,15,26,.02);
+      color: var(--text);
+    }
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .section{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .formGrid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased selection:bg-teal-100 selection:text-teal-900">
 
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-xl font-bold text-teal-700 tracking-tight">HY7601+KY1032 분석</span>
-                </div>
-                <div class="hidden sm:flex space-x-8">
-                    <button onclick="scrollToSection('hero')" class="text-stone-500 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">홈</button>
-                    <button onclick="scrollToSection('science')" class="text-stone-500 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">과학적 증거</button>
-                    <button onclick="scrollToSection('products')" class="text-stone-500 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">제품군</button>
-                    <button onclick="scrollToSection('reviews')" class="text-stone-500 hover:text-teal-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">사용자 후기</button>
-                </div>
-            </div>
+<body>
+  <div class="wrap">
+    <header class="nav" aria-label="Top navigation">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <b>FatSlim™</b><br/>
+          <span style="font-size:12px;color:var(--muted);">HY7601 + KY1032</span>
         </div>
-    </nav>
+      </a>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28">
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-            <div class="mb-6 inline-flex items-center px-4 py-1.5 rounded-full border border-teal-100 bg-teal-50 text-teal-800 text-xs font-semibold uppercase tracking-wide">
-                과학으로 입증된 듀얼 액션
-            </div>
-            <h1 class="text-4xl tracking-tight font-extrabold text-stone-900 sm:text-5xl md:text-6xl mb-6">
-                <span class="block">체지방 감소와 대사 혁신</span>
-                <span class="block text-teal-600">HY7601 + KY1032</span>
-            </h1>
-            <p class="mt-4 max-w-2xl text-xl text-stone-500 mx-auto">
-                단순한 유산균을 넘어선 체지방 감소 특화 프로바이오틱스. 
-                <br>과학적 논문과 임상 시험으로 입증된 킬팻 유산균의 효능을 데이터로 확인하세요.
-            </p>
-            <div class="mt-10 flex justify-center gap-4">
-                <button onclick="scrollToSection('science')" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg shadow-lg hover:shadow-xl transition-all">
-                    과학적 데이터 보기
-                </button>
-                <button onclick="scrollToSection('products')" class="px-8 py-3 border border-stone-300 text-base font-medium rounded-md text-stone-700 bg-white hover:bg-stone-50 md:py-4 md:text-lg shadow-sm hover:shadow-md transition-all">
-                    적용 제품 확인
-                </button>
-            </div>
+      <nav class="navlinks" aria-label="Sections">
+        <a href="#why">Why FatSlim</a>
+        <a href="#proof">Social Proof</a>
+        <a href="#use">Use Cases</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn" href="#proof">Read Partner Notes</a>
+        <a class="btn primary" href="#contact">Book a Booth Meeting</a>
+      </div>
+    </header>
+
+    <main id="top" class="hero">
+      <section>
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          Probiotic ingredient for <b>weight & body-fat support</b> (B2B / Expo-ready)
         </div>
+
+        <h1>Make “weight management” feel simple, premium, and believable.</h1>
+
+        <p class="sub">
+          <b>One-line product intro (with target):</b> FatSlim™ (L. curvatus HY7601 + L. plantarum KY1032) is a dual-strain probiotic blend designed for brands targeting adults with overweight who want daily support for body-fat and waistline management.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#contact">Request Sample + Sell Sheet</a>
+          <a class="btn" href="#use">See Formats</a>
+          <a class="btn" href="#why">Why It Works (High-level)</a>
+        </div>
+
+        <p class="fine">
+          Evidence anchor (for credibility, not “science lecture”): a 12-week randomized, double-blind, placebo-controlled human trial has been published in <i>Nutrients</i>. See publication details here:
+          <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">Mo et al., 2022 (MDPI)</a>.
+        </p>
+
+        <p class="fine">
+          Ingredient reference page for brand discussions:
+          <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">hy Co., Ltd. – HY7601 + KY1032 overview</a>.
+        </p>
+      </section>
+
+      <aside class="card" aria-label="Quick visual and headline KPIs">
+        <div class="productVisual">
+          <div class="mock" role="img" aria-label="Abstract product background">
+            <div class="tag"><b>Trade-show</b> landing</div>
+            <div class="pill">Dual-strain • “Daily routine” friendly</div>
+          </div>
+
+          <div class="kpis" aria-label="Headline metrics">
+            <div class="kpi">
+              <b>Premium Story</b>
+              <span>Simple claims + strong trust cues</span>
+            </div>
+            <div class="kpi">
+              <b>Clinically Studied</b>
+              <span>Human publication link included</span>
+            </div>
+            <div class="kpi">
+              <b>Brand-ready</b>
+              <span>Capsule / stick / food concepts</span>
+            </div>
+          </div>
+
+          <p class="fine" style="margin-top:2px;">
+            This page is intentionally styled like a consumer-friendly “review” landing—similar to the tone/layout of your reference page. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <section id="why" class="section">
+      <div class="card pad">
+        <h2>Why FatSlim™ (marketing-first)</h2>
+        <ul class="bullets">
+          <li class="li">
+            <div class="ic" aria-hidden="true">1</div>
+            <div>
+              <b>Clear positioning</b>
+              <p>“Daily probiotic support for body-fat and waistline goals”—easy to communicate at a booth in 10 seconds.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">2</div>
+            <div>
+              <b>Credibility without overwhelm</b>
+              <p>One publication link + one manufacturer link are enough for serious buyers to “lean in” when they ask for proof. (<a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">study</a>, <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">ingredient page</a>)</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">3</div>
+            <div>
+              <b>Portfolio compatibility</b>
+              <p>Fits weight-management stacks (protein, fiber, polyphenols) and can be extended into “metabolic routine” bundles.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card pad" id="use">
+        <h2>Best-fit use cases</h2>
+        <ul class="bullets">
+          <li class="li">
+            <div class="ic" aria-hidden="true">◎</div>
+            <div>
+              <b>Capsules</b>
+              <p>Fastest path to market; clean premium story; easiest for evidence-aligned daily routine messaging.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">↗</div>
+            <div>
+              <b>Stick packs / sachets</b>
+              <p>Great for “on-the-go routine” positioning—ideal for expo sampling programs.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">▦</div>
+            <div>
+              <b>Functional foods</b>
+              <p>Opportunity for lifestyle storytelling (breakfast routine, office routine, travel routine) without “clinical” vibes.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- Core Mechanism Section (Concept) -->
-    <section class="bg-white py-16 border-y border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-stone-900">핵심 성분: 듀얼 액션 포뮬러</h2>
-                <p class="mt-4 text-lg text-stone-500">두 가지 특허 균주의 시너지 효과로 완성된 체지방 감소 솔루션입니다.</p>
+    <section id="proof" class="section">
+      <div class="card pad">
+        <h2>What partners want to hear (social-proof style)</h2>
+        <div class="reviews">
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“We need an ingredient that sells fast at first glance.”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              FatSlim™ is positioned as an easy daily routine—simple claims + clean story + references ready when requested.
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Strain 1 -->
-                <div class="bg-stone-50 rounded-2xl p-8 border border-stone-100 shadow-sm relative overflow-hidden group hover:border-teal-200 transition-colors">
-                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-teal-100 rounded-full opacity-50 blur-xl group-hover:scale-150 transition-transform duration-700"></div>
-                    <h3 class="text-2xl font-bold text-stone-800 mb-2">HY7601</h3>
-                    <div class="h-1 w-20 bg-teal-500 rounded mb-4"></div>
-                    <p class="text-stone-600 mb-4">
-                        대사 활성화와 에너지 소비 효율 증가에 기여하는 핵심 균주입니다.
-                    </p>
-                    <ul class="space-y-2 text-sm text-stone-500">
-                        <li class="flex items-center">
-                            <span class="w-1.5 h-1.5 bg-teal-500 rounded-full mr-2"></span>
-                            체지방 감소 촉진 메커니즘
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-1.5 h-1.5 bg-teal-500 rounded-full mr-2"></span>
-                            콜레스테롤 대사 조절 지원
-                        </li>
-                    </ul>
-                </div>
+            <div class="src">
+              <span class="stars">★★★★★</span>
+              <span>Common buyer language at expos</span>
+            </div>
+          </div>
 
-                <!-- Strain 2 -->
-                <div class="bg-stone-50 rounded-2xl p-8 border border-stone-100 shadow-sm relative overflow-hidden group hover:border-orange-200 transition-colors">
-                    <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-orange-100 rounded-full opacity-50 blur-xl group-hover:scale-150 transition-transform duration-700"></div>
-                    <h3 class="text-2xl font-bold text-stone-800 mb-2">KY1032</h3>
-                    <div class="h-1 w-20 bg-orange-400 rounded mb-4"></div>
-                    <p class="text-stone-600 mb-4">
-                        항비만 효능과 장내 환경 개선을 통해 체중 관리를 돕는 특화 균주입니다.
-                    </p>
-                    <ul class="space-y-2 text-sm text-stone-500">
-                        <li class="flex items-center">
-                            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></span>
-                            지방 세포 형성 억제 지원
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-1.5 h-1.5 bg-orange-400 rounded-full mr-2"></span>
-                            장내 미생물 밸런스 최적화
-                        </li>
-                    </ul>
-                </div>
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“Do you have published evidence?”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              Yes—an RCT publication is available for review:
+              <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">Mo et al., 2022 (Nutrients)</a>.
             </div>
-            
-            <div class="mt-8 text-center">
-                <div class="inline-block bg-teal-50 px-6 py-3 rounded-lg border border-teal-100">
-                    <span class="font-bold text-teal-800">Synergy Effect:</span> 
-                    <span class="text-stone-600">체지방 감소 + 대사 기능 개선 + 장 건강 동시 케어</span>
-                </div>
+            <div class="src">
+              <span class="stars">Verified</span>
+              <span>Click-through proof</span>
             </div>
+          </div>
+
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“Can you send a one-pager today?”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              This landing is structured to double as a booth QR page—swap in your logo, booth number, and contact email.
+            </div>
+            <div class="src">
+              <span class="stars">Expo-ready</span>
+              <span>QR-first layout</span>
+            </div>
+          </div>
         </div>
+
+        <p class="fine">
+          If you want, I can also produce a matching <span class="kbd">1-page PDF sell sheet</span> using the same visual language.
+        </p>
+      </div>
+
+      <div class="card pad" id="contact">
+        <h2>Contact (booth lead capture)</h2>
+        <p class="sub" style="margin-top:0">
+          Built for fast expo conversations: collect lead → send spec sheet, COA, MOQ, and sample logistics.
+        </p>
+
+        <!-- Max compatibility for GitHub Pages: mailto form -->
+        <form class="form" action="mailto:YOUR_EMAIL@company.com" method="post" enctype="text/plain">
+          <div class="formGrid">
+            <label>
+              Name
+              <input name="Name" required placeholder="Jane Doe" />
+            </label>
+            <label>
+              Company
+              <input name="Company" required placeholder="Brand / Distributor / OEM" />
+            </label>
+          </div>
+
+          <div class="formGrid">
+            <label>
+              Email
+              <input name="Email" type="email" required placeholder="name@company.com" />
+            </label>
+            <label>
+              Interest
+              <select name="Interest">
+                <option>Samples + Spec Sheet</option>
+                <option>Pricing / MOQ</option>
+                <option>Finished Product Proposal</option>
+                <option>Distribution Partnership</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Message
+            <textarea name="Message" rows="4" placeholder="Target market, preferred format (capsule/stick/food), and timeline."></textarea>
+          </label>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
+            <button class="btn primary" type="submit">Send Inquiry</button>
+            <a class="btn" href="#top">Back to Top</a>
+          </div>
+
+          <p class="fine">
+            Tip: for true lead capture without opening a mail client, replace <span class="kbd">mailto:</span> with Formspree/Getform/Netlify Forms.
+          </p>
+        </form>
+      </div>
     </section>
 
-    <!-- Scientific Evidence Section (Data Dashboard) -->
-    <section id="science" class="py-16 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <h2 class="text-3xl font-extrabold text-stone-900">과학적 증거 및 임상 결과</h2>
-                <p class="mt-4 text-lg text-stone-500 max-w-3xl">
-                    다수의 논문과 임상 실험을 통해 HY7601+KY1032의 효능이 입증되었습니다. 
-                    아래 탭을 눌러 각 연구의 핵심 결과를 확인하세요.
-                </p>
-            </div>
+    <footer class="foot">
+      <div>
+        <b>References (public links):</b>
+        <ul style="margin:10px 0 0; padding-left:18px;">
+          <li>
+            Mo et al., 2022 (Nutrients, MDPI):
+            <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">https://www.mdpi.com/2072-6643/14/12/2484</a>
+          </li>
+          <li>
+            hy Co., Ltd. ingredient overview:
+            <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032</a>
+          </li>
+        </ul>
+      </div>
 
-            <!-- Tabs Navigation -->
-            <div class="flex flex-wrap border-b border-stone-200 mb-8" id="science-tabs">
-                <button class="tab-btn px-6 py-3 text-stone-500 font-medium hover:text-stone-800 focus:outline-none tab-active" data-tab="metabolism">
-                    대사 및 체중 감소
-                </button>
-                <button class="tab-btn px-6 py-3 text-stone-500 font-medium hover:text-stone-800 focus:outline-none" data-tab="microbiota">
-                    장내 미생물과 비만
-                </button>
-                <button class="tab-btn px-6 py-3 text-stone-500 font-medium hover:text-stone-800 focus:outline-none" data-tab="clinical">
-                    8주 임상 시험 결과
-                </button>
-            </div>
-
-            <!-- Tab Contents -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Left: Text Content -->
-                <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-stone-100">
-                    <div id="content-metabolism" class="tab-content block">
-                        <h3 class="text-xl font-bold text-teal-700 mb-3">Effect on Weight Loss and Metabolism</h3>
-                        <p class="text-stone-600 mb-4 leading-relaxed">
-                            이 연구는 HY7601+KY1032 복합물이 대사 기능에 미치는 긍정적인 영향을 규명했습니다. 단순한 체중 감량을 넘어 대사 효율성 자체가 개선됨을 확인했습니다.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">1</span>
-                                <span class="ml-3 text-sm text-stone-600">체중 감소 유의성 확인</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">2</span>
-                                <span class="ml-3 text-sm text-stone-600">기초 대사량 및 에너지 소비 증가</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="content-microbiota" class="tab-content hidden">
-                        <h3 class="text-xl font-bold text-teal-700 mb-3">Impact on Gut Microbiota</h3>
-                        <p class="text-stone-600 mb-4 leading-relaxed">
-                            비만과 장내 미생물의 상관관계를 분석한 연구입니다. 해당 유산균 섭취 시 '비만균'은 억제되고 '유익균'이 활성화되는 환경 조성을 확인했습니다.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">1</span>
-                                <span class="ml-3 text-sm text-stone-600">장내 미생물 다양성 증가</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">2</span>
-                                <span class="ml-3 text-sm text-stone-600">체질 개선을 통한 지속적 관리 용이</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div id="content-clinical" class="tab-content hidden">
-                        <h3 class="text-xl font-bold text-teal-700 mb-3">Clinical Trials for Fat Reduction</h3>
-                        <p class="text-stone-600 mb-4 leading-relaxed">
-                            가장 핵심적인 8주간의 인체 적용 시험 결과입니다. 참가자들은 별도의 과도한 운동 없이 유산균 섭취만으로 유의미한 체지방 감소를 경험했습니다.
-                        </p>
-                        <ul class="space-y-3">
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">1</span>
-                                <span class="ml-3 text-sm text-stone-600">8주 섭취 후 체지방률 감소 확인</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="flex-shrink-0 h-6 w-6 rounded-full bg-teal-100 flex items-center justify-center text-teal-600 font-bold text-xs mt-0.5">2</span>
-                                <span class="ml-3 text-sm text-stone-600">복부 지방 및 내장 지방 감소</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Right: Chart Visualization -->
-                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-stone-100 flex flex-col items-center justify-center">
-                    <div class="w-full mb-4 flex justify-between items-center">
-                        <h4 class="font-semibold text-stone-700" id="chart-title">8주간의 체지방 변화 추이 (시뮬레이션)</h4>
-                        <span class="text-xs text-stone-400 bg-stone-100 px-2 py-1 rounded">Interactive View</span>
-                    </div>
-                    
-                    <!-- Chart Container -->
-                    <div class="chart-container">
-                        <canvas id="clinicalChart"></canvas>
-                    </div>
-                    
-                    <p class="text-xs text-stone-400 mt-4 text-center">
-                        * 위 그래프는 "Clinical Trials on Probiotics for Fat Reduction"의 결과(8주간의 유의미한 감소)를 시각적으로 재구성한 예시입니다.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Product Lineup Section -->
-    <section id="products" class="py-16 bg-white border-t border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-teal-600 font-semibold tracking-wide uppercase text-sm">Product Ecosystem</span>
-                <h2 class="text-3xl font-extrabold text-stone-900 mt-2">다양한 라이프스타일 맞춤형 제품</h2>
-                <p class="mt-4 text-stone-500">당신의 생활 패턴에 가장 적합한 제품 유형을 선택하세요.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="card-hover bg-stone-50 rounded-xl p-6 border border-stone-100 flex flex-col">
-                    <div class="h-12 w-12 bg-teal-100 rounded-lg flex items-center justify-center text-2xl mb-4">💊</div>
-                    <h3 class="text-xl font-bold text-stone-800">체중 조절 보조제</h3>
-                    <p class="text-sm text-stone-500 mb-4">캡슐, 스틱팩 형태</p>
-                    <p class="text-stone-600 flex-grow">
-                        고농축 프로바이오틱스를 간편하게 섭취할 수 있는 형태입니다. 언제 어디서나 체중 관리를 원하는 분들께 적합합니다.
-                    </p>
-                    <div class="mt-6 pt-4 border-t border-stone-200">
-                        <span class="text-xs font-semibold text-teal-700 bg-teal-50 px-2 py-1 rounded">BEST FOR: 집중 관리</span>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="card-hover bg-stone-50 rounded-xl p-6 border border-stone-100 flex flex-col">
-                    <div class="h-12 w-12 bg-orange-100 rounded-lg flex items-center justify-center text-2xl mb-4">🥤</div>
-                    <h3 class="text-xl font-bold text-stone-800">헬스케어 음료</h3>
-                    <p class="text-sm text-stone-500 mb-4">기능성 음료</p>
-                    <p class="text-stone-600 flex-grow">
-                        맛있게 마시며 건강을 챙길 수 있습니다. 수분 보충과 함께 대사 활력 증진과 소화 개선 효과를 기대할 수 있습니다.
-                    </p>
-                    <div class="mt-6 pt-4 border-t border-stone-200">
-                        <span class="text-xs font-semibold text-orange-700 bg-orange-50 px-2 py-1 rounded">BEST FOR: 일상 활력</span>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="card-hover bg-stone-50 rounded-xl p-6 border border-stone-100 flex flex-col">
-                    <div class="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center text-2xl mb-4">🥗</div>
-                    <h3 class="text-xl font-bold text-stone-800">식이 보충제</h3>
-                    <p class="text-sm text-stone-500 mb-4">식사 대용 쉐이크 등</p>
-                    <p class="text-stone-600 flex-grow">
-                        식단 관리와 영양 섭취를 동시에 해결합니다. 칼로리 조절이 필요할 때 든든한 한 끼 대용으로 활용 가능합니다.
-                    </p>
-                    <div class="mt-6 pt-4 border-t border-stone-200">
-                        <span class="text-xs font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded">BEST FOR: 식단 병행</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- User Reviews & Analysis Section -->
-    <section id="reviews" class="py-16 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Content -->
-                <div>
-                    <h2 class="text-3xl font-extrabold text-stone-900 mb-6">사용자 후기 분석</h2>
-                    <p class="text-stone-600 mb-8 text-lg">
-                        실제 사용자들이 경험한 변화는 단순한 체중 감량 그 이상입니다. 
-                        수많은 후기에서 공통적으로 언급된 3가지 핵심 키워드를 확인하세요.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-10 w-10 rounded-full bg-teal-500 text-white font-bold">1</div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-stone-800">3-6주 내 체감 효과</h4>
-                                <p class="text-stone-500 mt-1">대다수의 사용자가 섭취 3주에서 6주 사이에 눈에 띄는 체중 변화를 경험했다고 보고했습니다.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-10 w-10 rounded-full bg-orange-400 text-white font-bold">2</div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-stone-800">에너지 & 소화 개선</h4>
-                                <p class="text-stone-500 mt-1">"몸이 가벼워졌다", "소화가 잘 된다", "활력이 생겼다"는 긍정적 피드백이 다수 존재합니다.</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="flex items-center justify-center h-10 w-10 rounded-full bg-blue-400 text-white font-bold">3</div>
-                            </div>
-                            <div class="ml-4">
-                                <h4 class="text-lg font-bold text-stone-800">건강한 시너지</h4>
-                                <p class="text-stone-500 mt-1">식단과 병행했을 때 혈당 지표 개선 등 부가적인 건강 혜택을 경험한 사례가 많습니다.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review Chart -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-100 flex flex-col items-center">
-                    <h4 class="font-bold text-stone-700 mb-6 w-full text-center">사용자 만족도 분포</h4>
-                    
-                    <!-- Chart Container for Doughnut -->
-                    <div class="chart-container" style="height: 300px; max-height: 300px;">
-                        <canvas id="reviewChart"></canvas>
-                    </div>
-
-                    <div class="mt-6 text-center text-sm text-stone-500">
-                        <p>후기 데이터 기반 주요 언급 키워드 비율</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="bg-teal-700 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-white mb-4">건강한 다이어트의 시작</h2>
-            <p class="text-teal-100 text-lg mb-8 max-w-2xl mx-auto">
-                HY7601+KY1032와 함께 과학적이고 지속 가능한 체중 관리를 시작해보세요.
-            </p>
-            <button onclick="alert('이 기능은 실제 쇼핑몰로 연결됩니다.')" class="bg-white text-teal-800 font-bold py-3 px-8 rounded-full hover:bg-teal-50 transition shadow-lg transform hover:scale-105">
-                제품 자세히 보기
-            </button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-stone-900 text-stone-400 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-            <p class="mb-2">본 페이지는 HY7601+KY1032 유산균 제품에 대한 정보 제공 목적으로 제작되었습니다.</p>
-            <p>참고 문헌: "Effect of HY7601+KY1032 on Weight Loss and Metabolism", "Impact of Probiotic Strains on Obesity and Gut Microbiota"</p>
-            <p class="mt-4 text-stone-600">© 2023 HY7601 Analysis Report.</p>
-        </div>
+      <p style="margin:12px 0 0;">
+        © <span id="year"></span> FatSlim™ landing draft. For B2B marketing use only. Individual results may vary.
+      </p>
     </footer>
+  </div>
 
-    <script>
-        // State Management
-        const state = {
-            activeTab: 'metabolism',
-            chartInstance: null,
-            reviewChartInstance: null
-        };
-
-        // Data for Charts
-        const chartData = {
-            clinical: {
-                labels: ['0주', '2주', '4주', '6주', '8주'],
-                datasets: [{
-                    label: '체지방률 변화 (%)',
-                    data: [0, -1.2, -2.5, -3.8, -4.9], // Representative data simulating "significant reduction"
-                    borderColor: '#0d9488', // Teal-600
-                    backgroundColor: 'rgba(13, 148, 136, 0.1)',
-                    tension: 0.3,
-                    fill: true,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: '#0d9488',
-                    pointHoverBackgroundColor: '#0d9488',
-                    pointRadius: 5
-                }]
-            },
-            metabolism: {
-                labels: ['섭취 전', '섭취 후 (대사 개선)'],
-                datasets: [{
-                    label: '기초 대사량 지표 (임의 단위)',
-                    data: [1300, 1450],
-                    backgroundColor: ['#d6d3d1', '#0d9488'], // Stone, Teal
-                    borderRadius: 8
-                }]
-            },
-            microbiota: {
-                labels: ['유익균 (Lactobacillus)', '비만균 (Firmicutes)', '기타'],
-                datasets: [{
-                    label: '장내 미생물 분포 변화',
-                    data: [45, 20, 35],
-                    backgroundColor: ['#0d9488', '#f97316', '#d6d3d1'], // Teal, Orange, Stone
-                }]
-            }
-        };
-
-        const reviewData = {
-            labels: ['체중 감소', '소화/배변 개선', '활력/에너지', '기타'],
-            datasets: [{
-                data: [45, 30, 15, 10], // Estimated based on summary text emphasis
-                backgroundColor: [
-                    '#0d9488', // Teal
-                    '#2dd4bf', // Teal-400
-                    '#fb923c', // Orange
-                    '#e7e5e4'  // Stone-200
-                ],
-                borderWidth: 0,
-                hoverOffset: 10
-            }]
-        };
-
-        // DOM Elements
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tab-content');
-        const canvas = document.getElementById('clinicalChart');
-        const reviewCanvas = document.getElementById('reviewChart');
-        const chartTitle = document.getElementById('chart-title');
-
-        // Scroll Function
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        // Initialize Charts
-        function initCharts() {
-            // Main Clinical Chart (Line Chart by default)
-            const ctx = canvas.getContext('2d');
-            state.chartInstance = new Chart(ctx, {
-                type: 'line',
-                data: chartData.clinical,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: true, position: 'top' },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.parsed.y + '% 감소 (베이스라인 대비)';
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: { color: '#f5f5f4' },
-                            title: { display: true, text: '변화율 (%)' }
-                        },
-                        x: {
-                            grid: { display: false }
-                        }
-                    }
-                }
-            });
-
-            // Review Chart (Doughnut)
-            const reviewCtx = reviewCanvas.getContext('2d');
-            state.reviewChartInstance = new Chart(reviewCtx, {
-                type: 'doughnut',
-                data: reviewData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } }
-                    },
-                    cutout: '65%'
-                }
-            });
-        }
-
-        // Update Chart Logic based on Tab
-        function updateChart(tabName) {
-            if (!state.chartInstance) return;
-            state.chartInstance.destroy();
-
-            const ctx = canvas.getContext('2d');
-            let config = {};
-
-            if (tabName === 'clinical') {
-                chartTitle.innerText = "8주간의 체지방 변화 추이 (Line Chart)";
-                config = {
-                    type: 'line',
-                    data: chartData.clinical,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: true }, tooltip: { mode: 'index', intersect: false } },
-                        scales: { y: { title: { display: true, text: '변화율 (%)' } } }
-                    }
-                };
-            } else if (tabName === 'metabolism') {
-                chartTitle.innerText = "대사량 개선 비교 (Bar Chart)";
-                config = {
-                    type: 'bar',
-                    data: chartData.metabolism,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: { y: { beginAtZero: true } }
-                    }
-                };
-            } else if (tabName === 'microbiota') {
-                chartTitle.innerText = "섭취 후 장내 미생물 구성 (Pie Chart)";
-                config = {
-                    type: 'pie',
-                    data: chartData.microbiota,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'right' } }
-                    }
-                };
-            }
-
-            state.chartInstance = new Chart(ctx, config);
-        }
-
-        // Tab Event Listeners
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const target = tab.getAttribute('data-tab');
-                
-                // UI Update
-                tabs.forEach(t => t.classList.remove('tab-active'));
-                tab.classList.add('tab-active');
-
-                contents.forEach(c => c.classList.add('hidden'));
-                document.getElementById(`content-${target}`).classList.remove('hidden');
-
-                // Chart Update
-                updateChart(target);
-            });
-        });
-
-        // Initialize on Load
-        window.addEventListener('load', () => {
-            initCharts();
-            // Trigger default chart update to ensure consistency
-            updateChart('metabolism'); 
-        });
-
-    </script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
