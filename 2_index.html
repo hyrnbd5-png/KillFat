@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FatSlim™ Probiotics (HY7601 + KY1032) | Weight & Body-Fat Support</title>
+  <meta name="description" content="FatSlim™ (HY7601 + KY1032) is a dual-strain probiotic blend designed for brands building weight & body-fat support products. Expo-ready one-page landing." />
+
+  <style>
+    :root{
+      --bg:#fbfbfd;
+      --card:#ffffff;
+      --text:#0b0f1a;
+      --muted:#5a6478;
+      --line:rgba(11,15,26,.10);
+      --accent:#2563eb;
+      --accent2:#0ea5e9;
+      --good:#16a34a;
+      --shadow: 0 18px 40px rgba(11,15,26,.08);
+      --radius: 18px;
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 500px at 70% -10%, rgba(37,99,235,.12), transparent 60%),
+        radial-gradient(900px 500px at 10% 0%, rgba(14,165,233,.10), transparent 60%),
+        var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 90px;}
+    .nav{
+      position:sticky; top:14px; z-index:20;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(11,15,26,.06);
+    }
+    .brand{display:flex; gap:10px; align-items:center; text-decoration:none}
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+    .brand b{letter-spacing:.2px}
+    .navlinks{display:flex; gap:10px; align-items:center}
+    .navlinks a{
+      text-decoration:none; font-size:14px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+    }
+    .navlinks a:hover{background:rgba(11,15,26,.04); color:var(--text)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 10px 22px rgba(11,15,26,.06);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      color:var(--text);
+      transition: transform .15s ease, box-shadow .15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 26px rgba(11,15,26,.09)}
+    .btn.primary{
+      border:none;
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 16px 34px rgba(37,99,235,.22);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      padding:34px 6px 8px;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.8);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .dot{width:9px; height:9px; border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(22,163,74,.12)}
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.8px;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:62ch;
+    }
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 10px}
+    .fine{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:12.8px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card.pad{padding:18px}
+
+    .productVisual{
+      padding:18px;
+      display:flex; flex-direction:column; gap:12px;
+      min-height: 320px;
+    }
+    .mock{
+      height: 230px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(240px 170px at 25% 40%, rgba(37,99,235,.16), transparent 60%),
+        radial-gradient(280px 190px at 70% 35%, rgba(14,165,233,.14), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.9), rgba(11,15,26,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .pill{
+      position:absolute; left:14px; bottom:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+      color:var(--text);
+    }
+    .tag{
+      position:absolute; right:14px; top:14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .tag b{color:var(--text)}
+    .kpis{
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+      background:rgba(11,15,26,.02);
+    }
+    .kpi b{display:block; font-size:18px; letter-spacing:-.2px}
+    .kpi span{display:block; margin-top:4px; color:var(--muted); font-size:12.5px}
+
+    .section{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+    }
+    h2{margin:0 0 10px; font-size:20px; letter-spacing:-.3px}
+    .bullets{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+    .li{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+    }
+    .ic{
+      width:34px; height:34px;
+      border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(37,99,235,.08);
+      border:1px solid rgba(37,99,235,.18);
+      flex:0 0 auto;
+      font-weight:900;
+      color:var(--accent);
+    }
+    .li b{display:block; font-size:14px}
+    .li p{margin:4px 0 0; color:var(--muted); font-size:13px}
+
+    .reviews{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+    .quote{
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px;
+      background:#fff;
+    }
+    .quote .src{margin-top:8px; color:var(--muted); font-size:12.5px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+    .quote .stars{color:#0b0f1a; font-weight:900}
+    .quote a{color:var(--accent); text-decoration:none}
+    .quote a:hover{text-decoration:underline}
+
+    .form{
+      display:grid;
+      gap:10px;
+      margin-top:8px;
+    }
+    label{display:grid; gap:6px; font-size:13px; color:var(--muted)}
+    input,select,textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      outline:none;
+      font-family:var(--font);
+      font-size:14px;
+    }
+    textarea{resize:vertical}
+    .formGrid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .foot{
+      margin-top:22px;
+      padding-top:14px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .kbd{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      font-size:12px;
+      padding:2px 8px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(11,15,26,.02);
+      color: var(--text);
+    }
+
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .section{grid-template-columns:1fr}
+      .kpis{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .formGrid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="nav" aria-label="Top navigation">
+      <a class="brand" href="#top">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <b>FatSlim™</b><br/>
+          <span style="font-size:12px;color:var(--muted);">HY7601 + KY1032</span>
+        </div>
+      </a>
+
+      <nav class="navlinks" aria-label="Sections">
+        <a href="#why">Why FatSlim</a>
+        <a href="#proof">Social Proof</a>
+        <a href="#use">Use Cases</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a class="btn" href="#proof">Read Partner Notes</a>
+        <a class="btn primary" href="#contact">Book a Booth Meeting</a>
+      </div>
+    </header>
+
+    <main id="top" class="hero">
+      <section>
+        <div class="badge">
+          <span class="dot" aria-hidden="true"></span>
+          Probiotic ingredient for <b>weight & body-fat support</b> (B2B / Expo-ready)
+        </div>
+
+        <h1>Make “weight management” feel simple, premium, and believable.</h1>
+
+        <p class="sub">
+          <b>One-line product intro (with target):</b> FatSlim™ (L. curvatus HY7601 + L. plantarum KY1032) is a dual-strain probiotic blend designed for brands targeting adults with overweight who want daily support for body-fat and waistline management.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="#contact">Request Sample + Sell Sheet</a>
+          <a class="btn" href="#use">See Formats</a>
+          <a class="btn" href="#why">Why It Works (High-level)</a>
+        </div>
+
+        <p class="fine">
+          Evidence anchor (for credibility, not “science lecture”): a 12-week randomized, double-blind, placebo-controlled human trial has been published in <i>Nutrients</i>. See publication details here:
+          <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">Mo et al., 2022 (MDPI)</a>.
+        </p>
+
+        <p class="fine">
+          Ingredient reference page for brand discussions:
+          <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">hy Co., Ltd. – HY7601 + KY1032 overview</a>.
+        </p>
+      </section>
+
+      <aside class="card" aria-label="Quick visual and headline KPIs">
+        <div class="productVisual">
+          <div class="mock" role="img" aria-label="Abstract product background">
+            <div class="tag"><b>Trade-show</b> landing</div>
+            <div class="pill">Dual-strain • “Daily routine” friendly</div>
+          </div>
+
+          <div class="kpis" aria-label="Headline metrics">
+            <div class="kpi">
+              <b>Premium Story</b>
+              <span>Simple claims + strong trust cues</span>
+            </div>
+            <div class="kpi">
+              <b>Clinically Studied</b>
+              <span>Human publication link included</span>
+            </div>
+            <div class="kpi">
+              <b>Brand-ready</b>
+              <span>Capsule / stick / food concepts</span>
+            </div>
+          </div>
+
+          <p class="fine" style="margin-top:2px;">
+            This page is intentionally styled like a consumer-friendly “review” landing—similar to the tone/layout of your reference page. :contentReference[oaicite:1]{index=1}
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <section id="why" class="section">
+      <div class="card pad">
+        <h2>Why FatSlim™ (marketing-first)</h2>
+        <ul class="bullets">
+          <li class="li">
+            <div class="ic" aria-hidden="true">1</div>
+            <div>
+              <b>Clear positioning</b>
+              <p>“Daily probiotic support for body-fat and waistline goals”—easy to communicate at a booth in 10 seconds.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">2</div>
+            <div>
+              <b>Credibility without overwhelm</b>
+              <p>One publication link + one manufacturer link are enough for serious buyers to “lean in” when they ask for proof. (<a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">study</a>, <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">ingredient page</a>)</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">3</div>
+            <div>
+              <b>Portfolio compatibility</b>
+              <p>Fits weight-management stacks (protein, fiber, polyphenols) and can be extended into “metabolic routine” bundles.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card pad" id="use">
+        <h2>Best-fit use cases</h2>
+        <ul class="bullets">
+          <li class="li">
+            <div class="ic" aria-hidden="true">◎</div>
+            <div>
+              <b>Capsules</b>
+              <p>Fastest path to market; clean premium story; easiest for evidence-aligned daily routine messaging.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">↗</div>
+            <div>
+              <b>Stick packs / sachets</b>
+              <p>Great for “on-the-go routine” positioning—ideal for expo sampling programs.</p>
+            </div>
+          </li>
+          <li class="li">
+            <div class="ic" aria-hidden="true">▦</div>
+            <div>
+              <b>Functional foods</b>
+              <p>Opportunity for lifestyle storytelling (breakfast routine, office routine, travel routine) without “clinical” vibes.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="proof" class="section">
+      <div class="card pad">
+        <h2>What partners want to hear (social-proof style)</h2>
+        <div class="reviews">
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“We need an ingredient that sells fast at first glance.”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              FatSlim™ is positioned as an easy daily routine—simple claims + clean story + references ready when requested.
+            </div>
+            <div class="src">
+              <span class="stars">★★★★★</span>
+              <span>Common buyer language at expos</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“Do you have published evidence?”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              Yes—an RCT publication is available for review:
+              <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">Mo et al., 2022 (Nutrients)</a>.
+            </div>
+            <div class="src">
+              <span class="stars">Verified</span>
+              <span>Click-through proof</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <div style="font-weight:800; font-size:14px;">“Can you send a one-pager today?”</div>
+            <div style="margin-top:8px; color:var(--muted); font-size:13px;">
+              This landing is structured to double as a booth QR page—swap in your logo, booth number, and contact email.
+            </div>
+            <div class="src">
+              <span class="stars">Expo-ready</span>
+              <span>QR-first layout</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="fine">
+          If you want, I can also produce a matching <span class="kbd">1-page PDF sell sheet</span> using the same visual language.
+        </p>
+      </div>
+
+      <div class="card pad" id="contact">
+        <h2>Contact (booth lead capture)</h2>
+        <p class="sub" style="margin-top:0">
+          Built for fast expo conversations: collect lead → send spec sheet, COA, MOQ, and sample logistics.
+        </p>
+
+        <!-- Max compatibility for GitHub Pages: mailto form -->
+        <form class="form" action="mailto:YOUR_EMAIL@company.com" method="post" enctype="text/plain">
+          <div class="formGrid">
+            <label>
+              Name
+              <input name="Name" required placeholder="Jane Doe" />
+            </label>
+            <label>
+              Company
+              <input name="Company" required placeholder="Brand / Distributor / OEM" />
+            </label>
+          </div>
+
+          <div class="formGrid">
+            <label>
+              Email
+              <input name="Email" type="email" required placeholder="name@company.com" />
+            </label>
+            <label>
+              Interest
+              <select name="Interest">
+                <option>Samples + Spec Sheet</option>
+                <option>Pricing / MOQ</option>
+                <option>Finished Product Proposal</option>
+                <option>Distribution Partnership</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Message
+            <textarea name="Message" rows="4" placeholder="Target market, preferred format (capsule/stick/food), and timeline."></textarea>
+          </label>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
+            <button class="btn primary" type="submit">Send Inquiry</button>
+            <a class="btn" href="#top">Back to Top</a>
+          </div>
+
+          <p class="fine">
+            Tip: for true lead capture without opening a mail client, replace <span class="kbd">mailto:</span> with Formspree/Getform/Netlify Forms.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div>
+        <b>References (public links):</b>
+        <ul style="margin:10px 0 0; padding-left:18px;">
+          <li>
+            Mo et al., 2022 (Nutrients, MDPI):
+            <a href="https://www.mdpi.com/2072-6643/14/12/2484" target="_blank" rel="noopener">https://www.mdpi.com/2072-6643/14/12/2484</a>
+          </li>
+          <li>
+            hy Co., Ltd. ingredient overview:
+            <a href="https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032" target="_blank" rel="noopener">https://www.hy.co.kr/en/business/research-development/probiotics/hy7601-ky1032</a>
+          </li>
+        </ul>
+      </div>
+
+      <p style="margin:12px 0 0;">
+        © <span id="year"></span> FatSlim™ landing draft. For B2B marketing use only. Individual results may vary.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
